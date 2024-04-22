@@ -57,8 +57,9 @@
 
   <body>
     <h1>TinyMCE Quick Start Guide</h1>
-    <form method="post">
+    <form method="post" action="{{route('posts.ini')}}">
       <textarea name="datapost" id="mytextarea">Hello, World!</textarea>
+      <button type="submit">Enter gassss membangun candi!</button>
     </form>
   </body>
 </html>
