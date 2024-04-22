@@ -13,7 +13,21 @@ class EditorController extends Controller
 
     public function post_data(Request $request)
     {
-        dd($request->datapost);
+        dd($this->minifyHtml($request->datapost));
+    }
+
+    private function minifyHtml($html) {
+        // Hilangkan komentar HTML
+        $html = preg_replace('/<!--.*?-->/', '', $html);
+
+        // Hilangkan tab, spasi ekstra, dan newline
+        $html = preg_replace("/\s+/", " ", $html);
+        $html = preg_replace("/\s?(\>|\=|\{|\})\s?/", "$1", $html);
+
+        // Opsional: Hilangkan spasi antara tag-tag HTML
+        $html = str_replace("> <", "><", $html);
+
+        return $html;
     }
 
     public function upload_image(Request $request)
