@@ -11,6 +11,11 @@ class EditorController extends Controller
         return view('editor');
     }
 
+    public function post_data(Request $request)
+    {
+        dd($request->datapost);
+    }
+
     public function upload_image(Request $request)
     {
         $fileName = $request->file('file')->getClientOriginalName();
