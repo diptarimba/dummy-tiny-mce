@@ -13,7 +13,9 @@ class EditorController extends Controller
 
     public function post_data(Request $request)
     {
-        dd($this->minifyHtml($request->datapost));
+        $data = $this->minifyHtml($request->datapost);
+        $data = str_replace('"', '\"', $data);
+        dd($this->minifyHtml($data));
     }
 
     private function minifyHtml($html) {
